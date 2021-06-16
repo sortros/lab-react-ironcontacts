@@ -38,6 +38,16 @@ class App extends React.Component {
     this.setState( {contactList: contactListCopy})
 
   }
+  delete=(event) => {
+    console.log("ni er tipex borra azi")
+    console.log(event.target.id)
+    const contactListCopy= [...this.state.contactList]
+    
+    contactListCopy.splice(event.target.id,1)
+    
+    this.setState( {contactList: contactListCopy})
+
+  }
 
   render() {  
     return(
@@ -49,7 +59,7 @@ class App extends React.Component {
         <th>Popularity</th>
       </tr>
     
-    {this.state.contactList.map(contact => {
+    {this.state.contactList.map((contact, index) => {
       console.log(arr2);
       
         return (
@@ -57,6 +67,7 @@ class App extends React.Component {
           <td> <img width="50px" src={contact.pictureUrl}/> </td>
           <td>{contact.name}</td>
           <td>{contact.popularity}</td>
+          <td><button id={index} onClick={this.delete}>Delete</button></td>
         </tr>
       )
       
