@@ -13,7 +13,24 @@ class App extends React.Component {
   }
 
   addRandom=() => {
-    console.log(contacts[Math.floor(Math.random() * contacts.length)])
+    const randomContact= contacts[Math.floor(Math.random() * contacts.length)]
+    const contactListCopy= [...this.state.contactList]
+    contactListCopy.push(randomContact)
+    this.setState( {contactList: contactListCopy})
+
+  }
+
+  sortByName=() => {
+    console.log("mira que nombre ma zezy")
+    const contactListCopy= [...this.state.contactList]
+    console.log(contactListCopy)
+    contactListCopy.sort((a, b) => a.name > b.name ? 1 : -1);
+    
+    this.setState( {contactList: contactListCopy})
+  }
+
+  sortByPopularity=() => {
+    console.log("mira que polula zoy")
     const randomContact= contacts[Math.floor(Math.random() * contacts.length)]
     const contactListCopy= [...this.state.contactList]
     contactListCopy.push(randomContact)
@@ -46,6 +63,8 @@ class App extends React.Component {
     })}
     </table>
     <button onClick={this.addRandom}>Add Random Contact</button>
+    <button onClick={this.sortByName}>Sort by name</button>
+    <button onClick={this.sortByPopularity}>Sort by popularity</button>
   </div>)
     
 }
