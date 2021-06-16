@@ -31,9 +31,10 @@ class App extends React.Component {
 
   sortByPopularity=() => {
     console.log("mira que polula zoy")
-    const randomContact= contacts[Math.floor(Math.random() * contacts.length)]
     const contactListCopy= [...this.state.contactList]
-    contactListCopy.push(randomContact)
+    console.log(contactListCopy)
+    contactListCopy.sort((a, b) => a.popularity > b.popularity ? 1 : -1);
+    
     this.setState( {contactList: contactListCopy})
 
   }
